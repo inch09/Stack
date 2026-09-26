@@ -38,23 +38,32 @@ Errors reallocDown(Stack_t* stk);
 
 
 int main(){
+    
     Errors err = NO_ERR;
     Stack_t stk = {};
     stackInit(&stk, 4);
+    //assert(1 == 0);
 
     stackPush(&stk, 1);
+    //assert(1 == 0);
     stackPush(&stk, 2);
+
+    //assert(1 == 0);
     stackPush(&stk, 3);
     stackPush(&stk, 4);
-    stackPush(&stk, 4);
-    stackPush(&stk, 4);
+    // stackPush(&stk, 4);
+    // stackPush(&stk, 4);
 
+    //stackPop(&stk, &err);
+    stackPop(&stk, &err);
+    stackPop(&stk, &err);
+    // stackPop(&stk, &err);
+    // stackPop(&stk, &err);
     stackPop(&stk, &err);
     stackPop(&stk, &err);
     stackPop(&stk, &err);
-
-    stackPush(&stk, 1);
-    stackPush(&stk, 1);
+    //stackPush(&stk, 1);
+    //stackPush(&stk, 1);
 
     
     //stackPop(&stk, &err);
@@ -89,7 +98,7 @@ Errors stackInit(Stack_t* stk, size_t capacity){
 Errors stackPush(Stack_t* stk, double value){
     STACK_VERIFY;
     //realloc
-    if(stk->size + 1 == stk->capacity){
+    if(stk->size == stk->capacity){
         reallocUp(stk);
     }
     stk->data[stk->size] = value;
@@ -103,9 +112,12 @@ Errors stackPush(Stack_t* stk, double value){
 double stackPop(Stack_t* stk, Errors* err){
     STACK_VERIFY;
     assert(err);
-
     //check errors to err
     //realloc
+    if(stk->size == 0){
+        assert(1 == 0);
+    }
+    // assert(stk->size != 0);
     double popValue = stk->data[stk->size - 1];
     stk->data[stk->size - 1] = POISON;
     stk->size--;
@@ -167,13 +179,13 @@ Errors stackDump(const char* fileName, Stack_t* stk){
 Errors reallocUp(Stack_t* stk){
     STACK_VERIFY;
 
-    const int scaleFactor = 2;
+    const size_t scaleFactor = 2;
     stk->capacity *= scaleFactor;
-    stk->data = (double*) realloc(stk->data, stk->capacity);
+    stk->data = (double*) realloc((void*) stk->data, stk->capacity);
+    assert(stk->data);
     for(size_t i = stk->size; i < stk->capacity; i++){
         stk->data[i] = POISON;
     }
-    assert(stk->data);
 
     return NO_ERR;
 }
@@ -197,10 +209,14 @@ Errors stackError(Stack_t* stk){
     if(stk->data == NULL){
         return ERR_2;
     }
+    if(stk->capacity == 0){
+        return ERR_3;
+    }
+
     // if(stk->capacity < 0){
     //     return ERR_3;
     // }
-    if(stk->size >= stk->capacity /* ????? */){
+    if(stk->size > stk->capacity /* ????? */){
         printf("size = %lu\n", (unsigned long) stk->size);
         return ERR_5;
     }
