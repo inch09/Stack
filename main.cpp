@@ -40,14 +40,24 @@ Errors reallocDown(Stack_t* stk);
 
 
 int main(){
-
+    Errors err = NO_ERR;
     Stack_t stk = {};
-    stackInit(&stk, 15);
+    stackInit(&stk, 4);
 
     stackPush(&stk, 1);
     stackPush(&stk, 2);
     stackPush(&stk, 3);
     stackPush(&stk, 4);
+    stackPush(&stk, 4);
+    stackPush(&stk, 4);
+
+    stackPop(&stk, &err);
+    stackPop(&stk, &err);
+    stackPop(&stk, &err);
+    stackPop(&stk, &err);
+    
+    //stackPop(&stk, &err);
+
 
     stackDump("stack.log", &stk);
 
@@ -78,7 +88,9 @@ Errors stackInit(Stack_t* stk, size_t capacity){
 Errors stackPush(Stack_t* stk, double value){
     STACK_VERIFY;
     //realloc
-
+    if(stk->size + 1 == stk->capacity){
+        reallocUp(stk);
+    }
     stk->data[stk->size] = value;
     stk->size++;
 
@@ -104,7 +116,7 @@ Errors stackDestroy(Stack_t* stk){
     STACK_VERIFY;
     //
     Errors err = NO_ERR;
-    for(size_t i = 0; i < stk->capacity; i++){
+    for(size_t i = 0; i < stk->size; i++){
         stackPop(stk, &err);
     }
 
@@ -155,6 +167,9 @@ Errors reallocUp(Stack_t* stk){
     const int scaleFactor = 2;
     stk->capacity *= scaleFactor;
     stk->data = (double*) realloc(stk->data, stk->capacity);
+    for(size_t i = stk->size; i < stk->capacity; i++){
+        stk->data[i] = POISON;
+    }
     assert(stk->data);
 
     return NO_ERR;
@@ -182,7 +197,8 @@ Errors stackError(Stack_t* stk){
     // if(stk->capacity < 0){
     //     return ERR_3;
     // }
-    if(stk->size >= stk->capacity){
+    if(stk->size >= stk->capacity /* ????? */){
+        printf("size = %lu\n", (unsigned long) stk->size);
         return ERR_4;
     }
 
