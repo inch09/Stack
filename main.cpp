@@ -2,7 +2,11 @@
 #include <stdio.h>
 
 #define POISON 239
-#define STACK_VERIFY assert(stackError(stk) == NO_ERR)
+#define STACK_VERIFY    if(stackError(stk) != NO_ERR){\
+                            printf("Err = %d\n", (int) stackError(stk));\
+                        }\
+                        assert(stackError(stk) == NO_ERR)
+                    
 
 struct Stack_t{
     double* data;
@@ -12,11 +16,11 @@ struct Stack_t{
 
 enum Errors{
     NO_ERR = 0,
-    ERR_1,
-    ERR_2,
-    ERR_3,
-    ERR_4,
-    ERR_5
+    ERR_1 = 1,
+    ERR_2 = 2,
+    ERR_3 = 3,
+    ERR_4 = 4,
+    ERR_5 = 5
 };
 
 Errors stackInit(Stack_t* stk, size_t capacity);
@@ -46,6 +50,8 @@ int main(){
     stackPush(&stk, 4);
 
     stackDump(&stk);
+
+    stackDestroy(&stk);
 
     return 0;
 }
@@ -97,13 +103,18 @@ double stackPop(Stack_t* stk, Errors* err){
 Errors stackDestroy(Stack_t* stk){
     STACK_VERIFY;
     //
-    stk->size = 0;
     Errors err = NO_ERR;
     for(size_t i = 0; i < stk->capacity; i++){
         stackPop(stk, &err);
     }
+
+    stk->size = 0;
     stk->capacity = 0;
+
     free(stk->data);
+    stk->data = NULL;
+    
+    stk = NULL;
 
     return NO_ERR;
 }
@@ -153,16 +164,17 @@ Errors reallocDown(Stack_t* stk){
 }
 
 Errors stackError(Stack_t* stk){
+
     if(stk == NULL){
         return ERR_1;
     }
     if(stk->data == NULL){
         return ERR_2;
     }
-    if(stk->capacity < 0){
-        return ERR_3;
-    }
-    if(stk->size >= stk->capacity || stk->size < 0){
+    // if(stk->capacity < 0){
+    //     return ERR_3;
+    // }
+    if(stk->size >= stk->capacity){
         return ERR_4;
     }
 
