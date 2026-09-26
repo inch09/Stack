@@ -30,7 +30,7 @@ Errors stackPush(Stack_t* stk, double value);
 double stackPop(Stack_t* stk, Errors* err);
 
 Errors stackError(Stack_t* stk);
-Errors stackDump(Stack_t* stk);
+Errors stackDump(const char* fileName, Stack_t* stk);
 
 void printStackData(Stack_t* stk);
 
@@ -49,7 +49,7 @@ int main(){
     stackPush(&stk, 3);
     stackPush(&stk, 4);
 
-    stackDump(&stk);
+    stackDump("stack.log", &stk);
 
     stackDestroy(&stk);
 
@@ -120,26 +120,34 @@ Errors stackDestroy(Stack_t* stk){
 }
 
 
-Errors stackDump(Stack_t* stk){
+Errors stackDump(const char* fileName, Stack_t* stk){
     STACK_VERIFY;
 
-    printf("capacity = %lu\n\n", (unsigned long) stk->capacity);
-    printf("    size = %lu\n\n", (unsigned long) stk->size);
-    printStackData(stk);
+    FILE* filePtr = fopen(fileName, "w");
 
+    fprintf(filePtr, "--------------------------------------------------------------------------------------------------------------------------\n");
+    fprintf(filePtr, "                   Information about our stack: \n");
+
+    fprintf(filePtr, "    capacity = %lu\n", (unsigned long) stk->capacity);
+    fprintf(filePtr, "    size = %lu\n\n", (unsigned long) stk->size);
+
+    for(size_t i = 0; i < stk->capacity; i++){
+        fprintf(filePtr, "     [%lu] = %lg\n\n", (unsigned long) i, stk->data[i]);
+    }
+
+    fprintf(filePtr, "----------------------------------------------------------------------------------------------------------------------\n");
+
+    fclose(filePtr);
     return NO_ERR;
 }
 
-void printStackData(Stack_t* stk){
-    STACK_VERIFY;
+// void printStackData(Stack_t* stk){
+//     STACK_VERIFY;
 
-    assert(stk);
-    assert(stk->data);
-
-    for(size_t i = 0; i < stk->capacity; i++){
-        printf("     [%lu] = %lg\n\n", (unsigned long) i, stk->data[i]);
-    }
-}
+//     for(size_t i = 0; i < stk->capacity; i++){
+//         printf("     [%lu] = %lg\n\n", (unsigned long) i, stk->data[i]);
+//     }
+// }
 
 Errors reallocUp(Stack_t* stk){
     STACK_VERIFY;

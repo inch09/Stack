@@ -1186,3 +1186,452 @@ Run file:	C:\Users\Иван\Documents\Stack\main.exe
 Directory:	C:\Users\Иван\Documents\Stack
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#2: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txUnhandledExceptionFilter(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x824 (Main), GetLastError(): 6 (Неверный дескриптор). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:17:19, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:17:22
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x334C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:23:22, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:23:39
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x220 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:24:15, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:24:18
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x2C68 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:25:04, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:25:06
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x51B4 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:27:23, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:27:26
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x1508 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:27:23, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:27:47
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x3624 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:27:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:28:16
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe,
+
+ВНЕЗАПНО: signal (11, 0x00): SIGSEGV: Доступ по неверному указателю. Ставьте ассерты! 
+
+Нарушение доступа к памяти.
+
+#2: Исключение EXCEPTION_ACCESS_VIOLATION (0xC0000005) при выполнении кода по адресу NULL. Попытка прочесть данные по адресу NULL. Спасибо _txUnhandledExceptionFilter(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x3624 (Main), GetLastError(): 6 (Неверный дескриптор). 
+
+--------------------------------------------------
+Стек вызовов:
+
+
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:27:59, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:28:17
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 91, функция: double stackPop(Stack_t*, Errors*),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "stackError(stk) == NO_ERR".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x2C84 (Main), GetLastError(): 183 (Невозможно создать файл, так как он уже существует). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041EC79 in C:\Users\Иван\Documents\Stack\main.exe: stackPop() at C:/Users/Иван/Documents/Stack/./main.cpp:91:
+
+     89: 
+     90: double stackPop(Stack_t* stk, Errors* err){
+=>   91:     STACK_VERIFY;
+     92:     assert(err);
+     93: 
+
+# 1 0x0041EE29 in C:\Users\Иван\Documents\Stack\main.exe: stackDestroy() at C:/Users/Иван/Documents/Stack/./main.cpp:108:
+
+    106:     Errors err = NO_ERR;
+    107:     for(size_t i = 0; i < stk->capacity; i++){
+=>  108:         stackPop(stk, &err);
+    109:     }
+    110: 
+
+# 2 0x0041E929 in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:54:
+
+     52:     stackDump("stack.log", &stk);
+     53: 
+=>   54:     stackDestroy(&stk);
+     55: 
+     56:     return 0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 15:29:53, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 15:29:56
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
