@@ -4,8 +4,8 @@
 #define POISON 239
 #define STACK_VERIFY    if(stackError(stk) != NO_ERR){\
                             printf("Err = %d\n", (int) stackError(stk));\
-                        }\
-                        assert(stackError(stk) == NO_ERR)
+                            assert(stackError(stk) == NO_ERR);\
+                        }
                     
 
 struct Stack_t{
@@ -32,8 +32,6 @@ double stackPop(Stack_t* stk, Errors* err);
 Errors stackError(Stack_t* stk);
 Errors stackDump(const char* fileName, Stack_t* stk);
 
-void printStackData(Stack_t* stk);
-
 Errors reallocUp(Stack_t* stk);
 Errors reallocDown(Stack_t* stk);
 
@@ -54,7 +52,10 @@ int main(){
     stackPop(&stk, &err);
     stackPop(&stk, &err);
     stackPop(&stk, &err);
-    stackPop(&stk, &err);
+
+    stackPush(&stk, 1);
+    stackPush(&stk, 1);
+
     
     //stackPop(&stk, &err);
 
@@ -108,6 +109,8 @@ double stackPop(Stack_t* stk, Errors* err){
     double popValue = stk->data[stk->size - 1];
     stk->data[stk->size - 1] = POISON;
     stk->size--;
+
+    STACK_VERIFY;
 
     return popValue;
 }
@@ -199,7 +202,7 @@ Errors stackError(Stack_t* stk){
     // }
     if(stk->size >= stk->capacity /* ????? */){
         printf("size = %lu\n", (unsigned long) stk->size);
-        return ERR_4;
+        return ERR_5;
     }
 
     return NO_ERR;

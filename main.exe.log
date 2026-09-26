@@ -2500,3 +2500,40 @@ Run file:	C:\Users\Иван\Documents\Stack\main.exe
 Directory:	C:\Users\Иван\Documents\Stack
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: C:\Users\Иван\Documents\Stack\main.exe, файл: .\main.cpp, строка: 41, функция: int main(),
+
+Сообщение: ВНЕЗАПНО: Логическая ошибка: Неверно, что "1 == 0".
+
+#1: TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400], Instance: 0x004F71DC (32-bit), Flags: Cmdre0, Thread: 0x4910 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0041E8BD in C:\Users\Иван\Documents\Stack\main.exe: main() at C:/Users/Иван/Documents/Stack/./main.cpp:41:
+
+     39: 
+     40: int main(){
+=>   41:     assert(1 == 0);
+     42:     Errors err = NO_ERR;
+     43:     Stack_t stk = {};
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 175, Date: 2025-12-31 23:02:50 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\users\иван\downloads\codeblocks\mingw\include\txlib.h
+Compiled:	Sep 26 2026 18:45:55, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Sep 26 2026 18:45:57
+
+Run file:	C:\Users\Иван\Documents\Stack\main.exe
+Directory:	C:\Users\Иван\Documents\Stack
+
+--------------------------------------------------
